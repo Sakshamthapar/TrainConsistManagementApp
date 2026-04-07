@@ -16,6 +16,28 @@ public class TrainConsistManagementApp {
             return name + " (" + capacity + ")";
         }
     }
+    static class PassengerBogie {
+        String name;
+        int capacity;
+
+        PassengerBogie(String name, int capacity) throws InvalidCapacityException {
+            if (capacity <= 0) {
+                throw new InvalidCapacityException("Capacity must be greater than 0!");
+            }
+            this.name = name;
+            this.capacity = capacity;
+        }
+
+        @Override
+        public String toString() {
+            return name + " (" + capacity + ")";
+        }
+    }
+    static class InvalidCapacityException extends Exception {
+        InvalidCapacityException(String message) {
+            super(message);
+        }
+    }
     public static void main(String[] args) {
 
         // ================= UC1 =================
@@ -332,7 +354,22 @@ public class TrainConsistManagementApp {
         System.out.println("Loop Time (ns): " + loopTime);
         System.out.println("Stream Time (ns): " + streamTime);
 
+// ================= UC14 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC14 - Handle Invalid Bogie Capacity");
+        System.out.println("=====================================\n");
 
+        try {
+            PassengerBogie b1 = new PassengerBogie("Sleeper", 72);
+            System.out.println("Created: " + b1);
+
+            // Invalid case
+            PassengerBogie b2 = new PassengerBogie("AC Chair", -10);
+            System.out.println("Created: " + b2);
+
+        } catch (InvalidCapacityException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
 
 
