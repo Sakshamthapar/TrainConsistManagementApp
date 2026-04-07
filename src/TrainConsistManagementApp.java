@@ -412,6 +412,31 @@ public class TrainConsistManagementApp {
         } finally {
             System.out.println("Operation completed (logged safely).");
         }
+// ================= UC16 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC16 - Sort Capacities using Bubble Sort");
+        System.out.println("=====================================\n");
+
+// Create array of capacities
+        int[] capacities = {72, 50, 30, 90, 60};
+
+// Bubble Sort
+        for (int i = 0; i < capacities.length - 1; i++) {
+            for (int j = 0; j < capacities.length - i - 1; j++) {
+                if (capacities[j] > capacities[j + 1]) {
+                    // swap
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                }
+            }
+        }
+
+// Display sorted result
+        System.out.println("Sorted Capacities:");
+        for (int cap : capacities) {
+            System.out.print(cap + " ");
+        }
 
 
 
