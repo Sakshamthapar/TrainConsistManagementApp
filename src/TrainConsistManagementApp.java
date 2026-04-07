@@ -518,10 +518,36 @@ public class TrainConsistManagementApp {
             System.out.println("Bogie ID " + key + " not found.");
         }
 
+// ================= UC20 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC20 - Exception Handling in Search");
+        System.out.println("=====================================\n");
 
+// Empty bogie list
+        List<String> searchList = new ArrayList<>();
 
+        try {
+            // Check if list is empty
+            if (searchList.isEmpty()) {
+                throw new IllegalStateException("No bogies available for search!");
+            }
 
+            // Dummy search (won’t execute if empty)
+            String keySearch = "BG101";
+            boolean foundSearch = false;
 
+            for (String id : searchList) {
+                if (id.equals(keySearch)) {
+                    foundSearch = true;
+                    break;
+                }
+            }
+
+            System.out.println("Search completed.");
+
+        } catch (IllegalStateException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
 
         // FINAL STATE
