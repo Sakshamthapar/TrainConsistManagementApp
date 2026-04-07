@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Arrays;
 
 public class TrainConsistManagementApp {
 
@@ -437,6 +438,20 @@ public class TrainConsistManagementApp {
         for (int cap : capacities) {
             System.out.print(cap + " ");
         }
+// ================= UC17 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC17 - Sort Bogie Names using Arrays.sort()");
+        System.out.println("=====================================\n");
+
+// Create array of bogie names
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "Cargo", "Guard"};
+
+// Sort alphabetically
+        Arrays.sort(bogieNames);
+
+// Display result
+        System.out.println("Sorted Bogie Names:");
+        System.out.println(Arrays.toString(bogieNames));
 
 
 
