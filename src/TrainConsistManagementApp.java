@@ -290,6 +290,48 @@ public class TrainConsistManagementApp {
         } else {
             System.out.println("Train is NOT SAFE! Invalid cargo detected.");
         }
+// ================= UC13 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC13 - Performance Comparison (Loop vs Stream)");
+        System.out.println("=====================================\n");
+
+// Create sample bogie list (reuse Bogie class)
+        List<Bogie> testBogies = new ArrayList<>();
+
+// Add multiple bogies for testing
+        for (int i = 0; i < 100000; i++) {
+            testBogies.add(new Bogie("Sleeper", 72));
+            testBogies.add(new Bogie("AC Chair", 50));
+            testBogies.add(new Bogie("First Class", 30));
+        }
+
+// -------- LOOP APPROACH --------
+        long startLoop = System.nanoTime();
+
+        List<Bogie> loopResult = new ArrayList<>();
+        for (Bogie b : testBogies) {
+            if (b.capacity > 60) {
+                loopResult.add(b);
+            }
+        }
+
+        long endLoop = System.nanoTime();
+        long loopTime = endLoop - startLoop;
+
+// -------- STREAM APPROACH --------
+        long startStream = System.nanoTime();
+
+        List<Bogie> streamResult = testBogies.stream()
+                .filter(b -> b.capacity > 60)
+                .toList();
+
+        long endStream = System.nanoTime();
+        long streamTime = endStream - startStream;
+
+// Display results
+        System.out.println("Loop Time (ns): " + loopTime);
+        System.out.println("Stream Time (ns): " + streamTime);
+
 
 
 
