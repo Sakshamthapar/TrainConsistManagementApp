@@ -224,6 +224,35 @@ public class TrainConsistManagementApp {
 // Display result
         System.out.println("Total Seating Capacity: " + totalSeats);
 
+// ================= UC11 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC11 - Validate Train ID & Cargo Code");
+        System.out.println("=====================================\n");
+
+// Sample inputs (you can change for demo)
+        String trainId = "TRN-1234";
+        String cargoCode = "PET-AZ";
+
+// Define regex patterns
+        String trainPattern = "TRN-\\d{4}";
+        String cargoPattern = "PET-[A-Z]{2}";
+
+// Validate using matches()
+        boolean isTrainValid = trainId.matches(trainPattern);
+        boolean isCargoValid = cargoCode.matches(cargoPattern);
+
+// Display results
+        if (isTrainValid) {
+            System.out.println("Train ID is valid.");
+        } else {
+            System.out.println("Invalid Train ID format.");
+        }
+
+        if (isCargoValid) {
+            System.out.println("Cargo Code is valid.");
+        } else {
+            System.out.println("Invalid Cargo Code format.");
+        }
 
 
 
