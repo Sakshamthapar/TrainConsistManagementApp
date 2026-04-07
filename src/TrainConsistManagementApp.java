@@ -43,6 +43,36 @@ public class TrainConsistManagementApp {
         } else {
             System.out.println("Sleeper bogie is NOT present.");
         }
+// ================= UC3 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC3 - Track Unique Bogie IDs");
+        System.out.println("=====================================\n");
+
+// Create a HashSet to store unique bogie IDs
+        Set<String> bogieIds = new HashSet<>();
+
+// ADD IDs (including duplicates)
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG103");
+        bogieIds.add("BG104");
+
+// Duplicate entries (will be ignored automatically)
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+
+// Display result
+        System.out.println("Bogie IDs After Insertion:");
+        System.out.println(bogieIds);
+
+        System.out.println("\nNote:");
+        System.out.println("Duplicates are automatically ignored by HashSet.");
+
+        System.out.println("\nUC3 uniqueness validation completed...");
+
+
+
+
 
         // FINAL STATE
         System.out.println("Final Passenger Bogies: " + passengerBogies);
