@@ -175,7 +175,23 @@ public class TrainConsistManagementApp {
         for (Bogie b : bogies) {
             System.out.println(b);
         }
+// ================= UC8 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC8 - Filter Bogies using Streams");
+        System.out.println("=====================================\n");
 
+// Reuse bogies list from UC7
+
+// Filter bogies with capacity > 60
+        List<Bogie> filteredBogies = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .toList();
+
+// Display filtered bogies
+        System.out.println("Bogies with capacity > 60:");
+        for (Bogie b : filteredBogies) {
+            System.out.println(b);
+        }
 
 
 
