@@ -2,6 +2,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class TrainConsistManagementApp {
+
+
     static class Bogie {
         String name;
         int capacity;
@@ -28,16 +30,33 @@ public class TrainConsistManagementApp {
             this.capacity = capacity;
         }
 
+
+
+
         @Override
         public String toString() {
             return name + " (" + capacity + ")";
         }
     }
+
+
+
+
+
     static class InvalidCapacityException extends Exception {
         InvalidCapacityException(String message) {
             super(message);
         }
     }
+    static class CargoSafetyException extends RuntimeException {
+        CargoSafetyException(String message) {
+            super(message);
+        }
+    }
+
+
+
+
     public static void main(String[] args) {
 
         // ================= UC1 =================
@@ -371,6 +390,28 @@ public class TrainConsistManagementApp {
             System.out.println("Error: " + e.getMessage());
         }
 
+// ================= UC15 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC15 - Safe Cargo Assignment");
+        System.out.println("=====================================\n");
+
+        try {
+            String bogieType = "Rectangular";
+            String cargo = "Petroleum";
+
+            // Rule: Petroleum allowed only in Cylindrical
+            if (bogieType.equals("Rectangular") && cargo.equals("Petroleum")) {
+                throw new CargoSafetyException("Unsafe cargo! Petroleum cannot be loaded in Rectangular bogie.");
+            }
+
+            System.out.println("Cargo assigned successfully.");
+
+        } catch (CargoSafetyException e) {
+            System.out.println("Error: " + e.getMessage());
+
+        } finally {
+            System.out.println("Operation completed (logged safely).");
+        }
 
 
 
