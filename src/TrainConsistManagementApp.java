@@ -100,7 +100,26 @@ public class TrainConsistManagementApp {
 // Final state
         System.out.println("Final Train Consist: " + train);
 
+        // ================= UC5 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC5 - Preserve Order with Uniqueness");
+        System.out.println("=====================================\n");
 
+// Create LinkedHashSet for ordered + unique bogies
+        Set<String> trainSet = new LinkedHashSet<>();
+
+// Add bogies
+        trainSet.add("Engine");
+        trainSet.add("Sleeper");
+        trainSet.add("Cargo");
+        trainSet.add("Guard");
+
+// Try adding duplicate
+        trainSet.add("Sleeper"); // duplicate
+
+// Display final formation
+        System.out.println("Final Train Formation (Ordered + Unique):");
+        System.out.println(trainSet);
 
 
 
