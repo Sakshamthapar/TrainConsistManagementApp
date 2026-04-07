@@ -253,6 +253,43 @@ public class TrainConsistManagementApp {
         } else {
             System.out.println("Invalid Cargo Code format.");
         }
+// ================= UC12 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC12 - Safety Validation using Streams");
+        System.out.println("=====================================\n");
+
+// Create goods bogie list (type + cargo)
+        class GoodsBogie {
+            String type;
+            String cargo;
+
+            GoodsBogie(String type, String cargo) {
+                this.type = type;
+                this.cargo = cargo;
+            }
+        }
+
+// Sample data
+        List<GoodsBogie> goodsList = new ArrayList<>();
+        goodsList.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsList.add(new GoodsBogie("Rectangular", "Coal"));
+        goodsList.add(new GoodsBogie("Cylindrical", "Petroleum")); // valid
+// Try invalid: new GoodsBogie("Cylindrical", "Coal")
+
+// Validate using allMatch()
+        boolean isSafe = goodsList.stream().allMatch(b -> {
+            if (b.type.equals("Cylindrical")) {
+                return b.cargo.equals("Petroleum"); // rule
+            }
+            return true;
+        });
+
+// Display result
+        if (isSafe) {
+            System.out.println("Train is SAFE for transportation.");
+        } else {
+            System.out.println("Train is NOT SAFE! Invalid cargo detected.");
+        }
 
 
 
