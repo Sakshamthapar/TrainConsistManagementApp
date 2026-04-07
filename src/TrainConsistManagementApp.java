@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TrainConsistManagementApp {
     static class Bogie {
@@ -192,6 +193,28 @@ public class TrainConsistManagementApp {
         for (Bogie b : filteredBogies) {
             System.out.println(b);
         }
+// ================= UC9 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC9 - Group Bogies using Streams");
+        System.out.println("=====================================\n");
+
+// Group bogies based on type (capacity-based classification)
+        Map<String, List<Bogie>> groupedBogies = bogies.stream()
+                .collect(Collectors.groupingBy(b -> {
+                    if (b.capacity >= 60) return "High Capacity";
+                    else if (b.capacity >= 40) return "Medium Capacity";
+                    else return "Low Capacity";
+                }));
+
+// Display grouped bogies
+        System.out.println("Grouped Bogies:");
+        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+
+
+
 
 
 
