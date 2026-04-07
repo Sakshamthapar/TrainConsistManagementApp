@@ -121,6 +121,35 @@ public class TrainConsistManagementApp {
         System.out.println("Final Train Formation (Ordered + Unique):");
         System.out.println(trainSet);
 
+        // ================= UC6 =================
+        System.out.println("\n=====================================");
+        System.out.println("UC6 - Map Bogie to Capacity");
+        System.out.println("=====================================\n");
+
+// Create HashMap for bogie-capacity mapping
+        Map<String, Integer> bogieCapacity = new HashMap<>();
+
+// Insert data (key = bogie, value = capacity)
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 50);
+        bogieCapacity.put("First Class", 30);
+
+// Display capacity of a specific bogie
+        System.out.println("Capacity of Sleeper: " + bogieCapacity.get("Sleeper"));
+
+// Iterate through map
+        System.out.println("\nAll Bogie Capacities:");
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+
+
+
+
+
+
+
 
 
         // FINAL STATE
